@@ -1,0 +1,64 @@
+// Place all the styles related to the articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+a {
+  color: DarkSlateBlue;
+
+  &:hover {
+    color: #e83e8c;
+  }
+}
+
+#show-content {
+  width: 75%;
+  max-width: 800px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .card-title {
+    font-size: 30px;
+  }
+
+  .card-text {
+    padding-top: 10px;
+  }
+}
+
+#link-content {
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+#link-box {
+  margin-bottom: 20px;
+
+  a {
+    color: black;
+
+    &:hover {
+      text-decoration: none;
+
+      .card-title {
+        color: DarkSlateBlue;
+      }
+    }
+  }
+}
+
+.card-text {
+  font-size: 16px;
+
+  pre {
+    padding: 10px 10px 10px 10px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+  }
+
+  blockquote {
+    padding-left: 30px;
+    border-left: 5px solid #e9ecef;
+  }
+}
