@@ -4,9 +4,13 @@ import { Card } from "react-bootstrap"
 
 class LinkCard extends React.Component {
   render () {
-    var substring = this.props.text.substring(0, 200) + "...";
+    var substring = this.props.text
     substring = substring.replace(new RegExp("</p>", "g"), "")
     substring = substring.replace(new RegExp("<p>", "g"), "")
+    substring = substring.replace(new RegExp("<img.*>", "g"), "")
+    substring = substring.replace(new RegExp("<a.*?>", "g"), "")
+    substring = substring.replace(new RegExp("<\\a>", "g"), "")
+    substring = substring.substring(0, 200) + "...";
     return (
       <React.Fragment>
         <a href={this.props.link}>

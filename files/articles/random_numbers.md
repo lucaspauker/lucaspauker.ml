@@ -1,5 +1,8 @@
 6/8/2019
 #Random Number Generator with Pi
+
+![](/assets/random_numbers.jpg)
+
 Recently, I wondered if I could create a random number generator using the digits of pi.
 
 Disclaimer: this article's purpose is not to create a computationally efficient random number generator; it is just a fun proof of concept.
