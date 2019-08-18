@@ -15,7 +15,7 @@
 
 <html>
   <head>
-    <title>Blog</title>
+    <title>Lucas Pauker</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -23,7 +23,8 @@
   </head>
 
   <body>
-    <%= react_component("MyNav") %>
+    <% active_page = request.original_fullpath.split('/')[1] %>
+    <%= react_component("MyNav", {active: active_page}) %>
     <%= yield %>
   </body>
 </html>

@@ -2,12 +2,36 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Navbar, NavDropdown, Nav } from "react-bootstrap"
 
-class MyNav extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {quantity: this.props.number_items}
+function Active(props) {
+  const active = props.active;
+  if (active=="articles") {
+    return [
+      <Nav.Link href="/">Home</Nav.Link>,
+      <div id="active">
+        <Nav.Link href="/articles">Blog</Nav.Link>
+      </div>,
+      <Nav.Link href="/projects">Projects</Nav.Link>
+    ]
+  } else if (active=="projects") {
+    return [
+      <Nav.Link href="/">Home</Nav.Link>,
+      <Nav.Link href="/articles">Blog</Nav.Link>,
+      <div id="active">
+        <Nav.Link href="/projects">Projects</Nav.Link>
+      </div>
+    ]
+  } else {
+    return [
+      <div id="active">
+        <Nav.Link href="/">Home</Nav.Link>
+      </div>,
+      <Nav.Link href="/articles">Blog</Nav.Link>,
+      <Nav.Link href="/projects">Projects</Nav.Link>
+    ]
   }
+}
 
+class MyNav extends React.Component {
   render () {
     return (
       <React.Fragment>
@@ -19,9 +43,7 @@ class MyNav extends React.Component {
           <Navbar.Collapse id="basic-navbar-nav">
             <div id="links">
               <Nav className="mr-auto">
-                <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="/articles">Blog</Nav.Link>
-                <Nav.Link href="/">Projects</Nav.Link>
+                <Active active={this.props.active}/>
               </Nav>
             </div>
           </Navbar.Collapse>
@@ -30,5 +52,9 @@ class MyNav extends React.Component {
     );
   }
 }
+
+MyNav.propTypes = {
+  active: PropTypes.string
+};
 
 export default MyNav

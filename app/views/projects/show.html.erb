@@ -1,0 +1,3 @@
+<div id="show-content">
+  <%= react_component("ShowCard", {title: @project.title, text: markdown(@project.text), date: @project.date.strftime('%b %d %Y'), image: @project.image, link: '#', back: "/projects"}) %>
+</div>

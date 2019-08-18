@@ -1,0 +1,38 @@
+body {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px; }
+
+h1 {
+  text-align: center;
+  color: #B22222;
+  padding: 0 0 20px 0;
+  border-bottom: 3px solid #808080;
+  font-size: 40px; }
+
+#body {
+  width: 75%;
+  margin: auto; }
+
+p {
+  color: black; }
+
+button {
+  background-color: #B22222;
+  color: white;
+  border: none;
+  padding: 10px 15px 10px 15px;
+  border-radius: 4px;
+  font-size: 14px; }
+  button:hover {
+    background-color: #808080; }
+
+h2 {
+  margin-top: 50px; }
+
+.red-circle {
+  fill: #B22222; }
+
+svg {
+  fill: #B22222; }
+
+/*# sourceMappingURL=index.css.map */

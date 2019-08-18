@@ -27,6 +27,13 @@ nav {
     letter-spacing: 2px;
     font-size: 20px;
   }
+
+  #active a {
+    background-color: #e9ecef;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 8px;
+  }
 }
 
 #links a {
@@ -37,5 +44,63 @@ nav {
   }
 }
 
-#title {
+a {
+  color: DarkSlateBlue;
+
+  &:hover {
+    color: #e83e8c;
+  }
+}
+
+#show-content {
+  width: 75%;
+  max-width: 800px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .card-title {
+    font-size: 30px;
+  }
+
+  .card-text {
+    padding-top: 10px;
+  }
+}
+
+#link-content {
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+#link-box {
+  margin-bottom: 20px;
+
+  a {
+    color: black;
+
+    &:hover {
+      text-decoration: none;
+
+      .card-title {
+        color: DarkSlateBlue;
+      }
+    }
+  }
+}
+
+.card-text {
+  font-size: 16px;
+
+  pre {
+    padding: 10px 10px 10px 10px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+  }
+
+  blockquote {
+    padding-left: 30px;
+    border-left: 5px solid #e9ecef;
+  }
 }

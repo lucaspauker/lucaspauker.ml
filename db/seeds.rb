@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Article.delete_all
+Project.delete_all
 
 files = Dir[Rails.root.join('files', 'articles', '*')]
 files.each do |file|
@@ -29,3 +30,28 @@ files.each do |file|
   a.date = date
   a.save
 end
+
+files = Dir[Rails.root.join('files', 'projects', '*')]
+files.each do |file|
+  f = File.open(file)
+  text = ''
+  title = ''
+  date= ''
+  f.each_with_index do |line, i|
+    if i == 0
+      date = line
+    elsif i == 1
+      title = line[1..-1]
+    else
+      text += line
+    end
+  end
+  p = Project.new
+  p.title = title
+  p.text = text
+  p.date = date
+  p.save
+end
+
+puts "There are now #{Article.count} rows in the articles table"
+puts "There are now #{Project.count} rows in the projects table"

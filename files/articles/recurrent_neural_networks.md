@@ -1,11 +1,11 @@
 5/5/2019
-#Recurrent Neural Networks
+#Recurrent Neural Networks for Song Lyrics
 
 I recently became interested in neural networks and sought interesting applications of what they could do. Neural networks are based on how the human brain works; the networks are made up of many nodes that take inputs and predict outputs. Over time, with more data, the networks improve by correcting for error, known as backpropagation. Neural networks become especially useful when there are many “layers” between the input and output that allow for more fine-tuned fitting of data.
 
-Recurrent neural networks have a sense of sequence built in, making them good for predicting text, market prices, or any other ordered data. Andrej Karpathy has written an easy-to-use module for recurrent neural networks that uses Torch, which I used for my neural network exploration.
+Recurrent neural networks have a sense of sequence built in, making them good for predicting text, market prices, or any other ordered data. Andrej Karpathy has written an [easy-to-use module](https://github.com/karpathy/char-rnn) for recurrent neural networks that uses Torch, which I used for my neural network exploration.
 
-I set out to predict song lyrics for a given artist by compiling their lyrics and feeding it into the neural network. In order to do this, I first built a Python script that searched for and combined the lyrics for an artist into a single file. I used the musixmatch API for gathering the data. I first gathered the track ids in batches of 20:
+I set out to predict song lyrics for a given artist by compiling their lyrics and feeding it into the neural network. In order to do this, I first built a Python script that searched for and combined the lyrics for an artist into a single file. I used the [musixmatch API](https://developer.musixmatch.com/) for gathering the data. I first gathered the track ids in batches of 20:
 
 ```
 def get_track_ids(artist):

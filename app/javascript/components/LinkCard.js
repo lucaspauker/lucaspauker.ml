@@ -4,6 +4,9 @@ import { Card } from "react-bootstrap"
 
 class LinkCard extends React.Component {
   render () {
+    var substring = this.props.text.substring(0, 200) + "...";
+    substring = substring.replace(new RegExp("</p>", "g"), "")
+    substring = substring.replace(new RegExp("<p>", "g"), "")
     return (
       <React.Fragment>
         <a href={this.props.link}>
@@ -11,7 +14,7 @@ class LinkCard extends React.Component {
             <Card.Body>
               <Card.Title>{this.props.title}</Card.Title>
               <Card.Subtitle className="mb-2 text-muted">{this.props.date}</Card.Subtitle>
-              <Card.Text>{this.props.text.substring(0, 100)}...</Card.Text>
+              <Card.Text dangerouslySetInnerHTML={{ __html: substring}}></Card.Text>
             </Card.Body>
           </Card>
         </a>
