@@ -1,15 +1,18 @@
 6/8/2019
-#Building a Simple Psuedorandom Number Generator
+#Random Number Generator with Pi
+Recently, I wondered if I could create a random number generator using the digits of pi.
 
-I set out to create a random number generator using the digits of pi.
+Disclaimer: this article's purpose is not to create a computationally efficient random number generator; it is just a fun proof of concept.
 
-In order to do this, we must first verify that the digits of pi are randomly distributed. This can be accomplished in a few lines of python. We will use the `mpmath` library, which provides high precision for constants such as pi.
+In order to create a random number generator with pi, we must first verify that the digits of pi are randomly distributed. This can be accomplished in a few lines of python code.
+
+We will use the `mpmath` library, which provides high precision for constants such as pi.
 
 ```
 from mpmath import mp
 ```
 
-Now, let's write a function to find the distribution of the base 10 digits in pi.
+Let's write a function to find the distribution of the base 10 digits in pi.
 
 ```
 def get_pi_frequency(num_digits):
@@ -32,15 +35,15 @@ n = 100_000
 print(get_pi_frequency(n))
 ```
 
-This is the output:
+Here is the output:
 
 ```
 {'0': 9999, '1': 10137, '2': 9908, '3': 10026, '4': 9970, '5': 10027, '6': 10028, '7': 10025, '8': 9978, '9': 9902}
 ```
 
-This looks very random by inspection - it is an even distribution. The standard deviation is 67.52, which is small.
+This looks very random by inspection - it is an even distribution. The standard deviation is 67.52, which is small compared to `n`.
 
-Now let's jump into the random number generation using pi. The general idea is that we will write a function that takes a seed value s and then we will return a random list of numbers after the s digit of pi. For example, if the seed is 100 and we want 10 random numbers, we will return the 100th-110th digits of pi.
+Now let's jump into random number generation. The general idea is that we will write a function that takes a seed value `s` and then we will return a random list of numbers after the `s` digit of pi. For example, if the seed is 100 and we want 10 random numbers, we will return the 100th-110th digits of pi.
 
 ```
 def get_random_number(k, seed=22_000):
@@ -55,7 +58,7 @@ def get_random_number(k, seed=22_000):
     return out
 ```
 
-Cool! Now we can output random numbers. However, there is one remaining issue: if we call get_random_number twice with the same seed, we will get the same "random" numbers. Thus, we should think of a way to systematically update the seed. One way to do it is to pick a random five-digit number to be the new seed.
+Cool! Now we can output random numbers. However, there is one remaining issue: if we call `get_random_number` twice with the same seed, we will get the same "random" numbers. Thus, we should think of a way to systematically update the seed. One way to do it is to pick a random five-digit number to be the new seed.
 
 ```
 def get_new_seed(seed):
