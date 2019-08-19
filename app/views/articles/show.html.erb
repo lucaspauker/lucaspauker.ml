@@ -1,3 +1,12 @@
 <div id="show-content">
-  <%= react_component("ShowCard", {title: @article.title, text: markdown(@article.text), date: @article.date.strftime('%b %d %Y'), image: @article.image, link: '#', back:"/articles"}) %>
+  <% full_text = "" %>
+  <% @article.text.each_line do |line| %>
+    <% if line.start_with? "!" %>
+      <% path = image_path(line.split("(")[1].strip[0..-2]) %>
+      <% line = line.split("(")[0] + "(" + path + ")" %>
+    <% end %>
+    <% full_text += line %>
+  <% end %>
+  <% article_text = markdown(full_text) %>
+  <%= react_component("ShowCard", {title: @article.title, text: article_text, date: @article.date.strftime('%b %d %Y'), image: @article.image, link: '#', back:"/articles"}) %>
 </div>
