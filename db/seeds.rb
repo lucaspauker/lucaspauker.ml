@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Article.delete_all
-Project.delete_all
+#Article.delete_all
+#Project.delete_all
 
 files = Dir[Rails.root.join('files', 'articles', '*')]
 files.each do |file|
@@ -24,7 +24,11 @@ files.each do |file|
       text += line
     end
   end
-  a = Article.new
+  unless Article.find_by(title: title).nil?
+    a = Article.find_by(title: title)
+  else
+    a = Article.new
+  end
   a.title = title
   a.text = text
   a.date = date
@@ -46,7 +50,11 @@ files.each do |file|
       text += line
     end
   end
-  p = Project.new
+  unless Project.find_by(title: title).nil?
+    p = Project.find_by(title: title)
+  else
+    p = Project.new
+  end
   p.title = title
   p.text = text
   p.date = date

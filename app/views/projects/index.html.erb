@@ -1,3 +1,4 @@
+<% @projects = @projects.sort_by {|project| project.date}.reverse %>
 <div id="link-content">
   <% @projects.each do |project| %>
     <div id="link-box">
