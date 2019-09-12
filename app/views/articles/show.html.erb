@@ -8,5 +8,5 @@
     <% full_text += line %>
   <% end %>
   <% article_text = markdown(full_text) %>
-  <%= react_component("ShowCard", {title: @article.title, text: article_text, date: @article.date.strftime('%b %d %Y'), image: @article.image, link: '#', back:"/articles"}) %>
+  <%= react_component("ShowCard", {title: @article.title, text: article_text, date: @article.date.strftime('%b %d %Y'), back:"/articles"}) %>
 </div>

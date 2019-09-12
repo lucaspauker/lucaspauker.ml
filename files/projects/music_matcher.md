@@ -6,7 +6,7 @@ Using audio processing techniques, such as Short-time Fourier Transform, we extr
 
 We used two ensemble classifiers, AdaBoost and Random Forest, and found that although Adaboost performed marginally better than Random Forest, the latter made more generalizable predictions. Both models achieve an accuracy rate of 60% on the test data, which is significantly better than the baseline prediction of 45%. Our project reveals the complexity of the era classification task, and we expect more complex models trained on a larger data set to achieve higher success.
 
-####Datasets
+##Datasets
 Our model was trained, developed, and tested on a combination of the following two datasets:
 
 1. FMA (Free Music Archive): a large-scale dataset of audio files with rich metadata, containing over 100,000 tracks across 161 genres (Defferrard et al). From this dataset, we found 441 tracks that were categorized as "classical" and had a valid composer.
@@ -14,7 +14,7 @@ Our model was trained, developed, and tested on a combination of the following t
 
 In total, our dataset consisted of 1723 songs, and we sampled the first 30 seconds of each song for feature extraction because practically a classifier should be able to make predictions with a limited exposure to the data. The songs were overwhelmingly from the Romantic period, with 789 Romantic songs in our dataset. In addition, we had 541 songs from the Baroque era, 280 from the Classical period, and 113 from the Modern era. The imbalance in the dataset may pose an over-fitting problem.
 
-####Feature Extraction
+##Feature Extraction
 We used an audio processing library for Python called `librosa` to extract the following features using Short-time Fourier Transform from each audio file: chromagram, spectral centroid, spectral rolloff, root mean square value (RMS), and tonal centroid of a track.
 
 - The *chromagram* is a distribution of the pitches in a track.
@@ -23,7 +23,7 @@ We used an audio processing library for Python called `librosa` to extract the f
 - The *root mean square* feature takes the root mean square value of the spectrogram, the distribution of frequency over time.
 - Lastly, the *tonal centroid* meaures harmonic properties of the pitches. We also expected to see high weight on this feature because another major distinction between the music from the earlier eras (Baroque and Classical) and the later eras, (Romantic and Modern), are the extent or lack of harmony. For each of the five features, we normalized and computed the mean and standard deviation.
 
-####Algorithms
+##Algorithms
 For this project, we used two main algorithms: Adaboost and Random Forest. Both algorithms have pros and cons, which is discussed below.
 
 **Adaboost**
@@ -36,14 +36,14 @@ Random Forest is an ensemble model that combines multiple simple decisions trees
 
 Another difference between Random Forest and Adaboost is that while the number of estimator parameter specifies the number of iteration in Adaboost, the number of estimator is a parameter for the number of decision trees to be constructed in a Random Forest classifier model. Instead of iterating each weight n times, Random Forest takes an average over n decision tree at the end.
 
-####Comparison of Models
+##Comparison of Models
 Both models were trained with the number of estimator parameter = 50, and performed moderately well with an accuracy rate of ~0.60, which is 0.15 over the threshold value (0.45) and is comparable to the current level of success with genre classification. Nevertheless, an improvement in the performance is desired 60% is barely over a majority value. Interestingly, the accuracy of models have consistently decreased from our preliminary results as we increased our data by one order of magnitude (100 -> +1700 data points). This suggests the failure of simple models in processing larger variations in a bigger data set and the necessity of more complex techniques, such as recurrent neural networks. Furthermore, while we expected Random Forest to perform better because it is more robust against over-fitting, Adaboost performed marginally better than Random Forest in both training and test set.
 
 An examination of the weight assignment yields more insights into the performance of the two models. We observe that the weight assignment for the Adaboost is more uniform across the ten features compared to Random Forest. In fact, the weights for the Adaboost are all around 0.1 for every feature except the mean of the spectral centroid. This is consistent with our understanding of the algorithms because the Adaboost initializes the weight for each feature with 1/n = 1/10 = 0.1 and then updates the weights after each iteration. With our low number of iterations (n=50), it is understandable that the feature weights do not deviate strongly from the initial values. However, we surprisingly found that the Adaboost performs worse with a larger estimator, which suggests the inherent limitation in the algorithm to process complex data. Since the Random Forest merges observations of randomly initialized decision trees, it is more precise than the Adaboost in that it weighs stronger features more heavily.
 
 Two notable features for the Random Forest model are the standard deviation of the spectral rolloff (=0.35, over 1/3) and the standard deviation of tonal centroid (=.21). We've seen the importance of the former feature consistently in our previous experiments. For each audio segment, (i.e. for each audio frame), spectral rolloff is the frequency at which 85% of the energy lies below the frequency, so the standard deviation of this feature reflects how the energy of a piece changes over time. Intuitively, this comes close to human "feeling" of a piece, which makes it a good feature. To illustrate, we expect the spectral energy to be more concentrated in the midrange of piano for a Baroque piece, in contrast with a modern piece, whose spectral energy is more likely to be widely dispersed throughout the possible frequency range. Similarly, the standard deviation of tonal centroid measures how harmonious the chords are in a piece, which is understandably a distinguishing factor for pieces across different eras.
 
-####Error Analysis
+##Error Analysis
 First, we can see that the Adaboost classifier never predicted Classical or Modern on the test dataset, which reveals the limitation of the model based on weak classifiers. This model failed to account for the minority data of the pieces from the Classical and Modern eras and over-fitted to the more abundant data.
 
 In contrast, the Random Forest model seems provides a more nuanced classification, and we expect that this model would outperform the Adaboost with a larger scale data. We suspect the lower performance on our test set of the Random Forest to the relatively small size of our data.

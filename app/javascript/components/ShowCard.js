@@ -24,6 +24,5 @@ ShowCard.propTypes = {
   text: PropTypes.string,
   date: PropTypes.string,
   back: PropTypes.string,
-  image: PropTypes.string
 };
 export default ShowCard

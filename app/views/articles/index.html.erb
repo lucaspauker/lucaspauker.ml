@@ -2,7 +2,7 @@
 <div id="link-content">
   <% @articles.each do |article| %>
     <div id="link-box">
-      <%= react_component("LinkCard", {title: article.title, text: markdown(article.text), date: article.date.strftime('%b %d %Y'), image: article.image, link: article_path(article)}) %>
+      <%= react_component("LinkCard", {title: article.title, text: markdown(article.text), date: article.date.strftime('%b %d %Y'), link: article_path(article)}) %>
     </div>
   <% end %>
   <p>More coming soon...</p>

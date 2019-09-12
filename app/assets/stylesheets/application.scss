@@ -14,12 +14,16 @@
  *= require_self
  */
 
+$light-gray: #e9ecef;
+$blue: DarkSlateBlue;
+$pink: #e83e8c;
+
 body {
-  line-height: 24px;
+  line-height: 26px;
 }
 
 nav {
-  border-bottom: 1px solid #e9ecef;
+  border-bottom: 1px solid $light-gray;
 
   a {
     text-transform: uppercase;
@@ -29,7 +33,7 @@ nav {
   }
 
   #active a {
-    background-color: #e9ecef;
+    background-color: $light-gray;
     border-radius: 5px;
     padding-left: 10px;
     padding-right: 8px;
@@ -37,18 +41,18 @@ nav {
 }
 
 #links a {
-  color: DarkSlateBlue;
+  color: $blue;
 
   &:hover {
-    color: #e83e8c;
+    color: $pink;
   }
 }
 
 a {
-  color: DarkSlateBlue;
+  color: $blue;
 
   &:hover {
-    color: #e83e8c;
+    color: $pink;
   }
 }
 
@@ -84,29 +88,46 @@ a {
       text-decoration: none;
 
       .card-title {
-        color: DarkSlateBlue;
+        color: $blue;
       }
     }
   }
 }
 
+//articles and projects show
 .card-text {
   font-size: 16px;
 
   pre {
     padding: 10px 10px 10px 10px;
-    background-color: #e9ecef;
+    background-color: $light-gray;
     border-radius: 5px;
   }
 
   blockquote {
     padding-left: 30px;
-    border-left: 5px solid #e9ecef;
+    border-left: 5px solid $light-gray;
+  }
+
+  img {
+    border-radius: 5px;
+    max-width: 100%;
+    margin-top: 20px;
+  }
+
+  h2 {
+    margin-top: 20px;
+    font-size: 26px;
+    border-bottom: solid 1px $light-gray;
+  }
+
+  .caption {
+    margin-bottom: 20px;
+    text-align: center;
+    color: $pink;
+    font-style: italic;
+    font-size: 0.9em;
   }
 }
 
-img {
-  border-radius: 5px;
-  margin: 5px 0 5px 0;
-  max-width: 100%;
-}
+

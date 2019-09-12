@@ -10,6 +10,7 @@ class LinkCard extends React.Component {
     substring = substring.replace(new RegExp("<img.*>", "g"), "")
     substring = substring.replace(new RegExp("<a.*?>", "g"), "")
     substring = substring.replace(new RegExp("<\\a>", "g"), "")
+    substring = substring.replace(new RegExp("<h.>.*</h.>", "g"), "")
     substring = substring.substring(0, 200) + "...";
     return (
       <React.Fragment>
