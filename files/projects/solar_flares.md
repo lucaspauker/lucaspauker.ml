@@ -113,16 +113,16 @@ Note: although the individual accuracies of the features are low, I expect that 
 
 There are some variables that far outperform the others.
 
-- The highest-performing variables are **unsigned flux** (USFLUX), **total electric current** (TOTUSJZ), and **total free energy** (TOTPOT).
+- The highest-performing variables are **unsigned flux** (USFLUX), **total electric current helicity** (TOTUSJH), and **total free energy** (TOTPOT).
   - _Unsigned flux_ is a measure of how much magnetic field there is in an area.
   The formula for flux is magnetic field times area.
   Changing flux indicates changes in fundamental properties of the active region, so it makes sense that total flux would be a strong predictor.
-  - _Total electric current_ is a measure of the rotation of the active region.
+  - _Total electric current helicity_ is a measure of the rotation of the active region.
   It makes sense that current would be a strong predictor since changing magnetic fields cause flares, and current measures how a magnetic field is changing.
   - _Total free energy_ is a measure of potential energy in an active region, which reflects how twisted the magnetic fields are.
   This is one of the best-performing features because flares are dependent upon a buildup of potential energy.
-- The lowest-performing variables are **mean electric current** (MEANJZD), and **polarity inversion line flux** (R_VALUE).
-  - _Mean electric current_ is the average electric current value across the entire active region.
+- The lowest-performing variables are **mean electric current helicity** (MEANJZH), and **polarity inversion line flux** (R_VALUE).
+  - _Mean electric current helicity_ is the average electric current helicity value across the entire active region.
   Since mean values are subject to more error than total values, this value is not a good predictor of flares.
   - _Polarity inversion line flux_ is the magnetic flux near the line that divides the positive and negative regions on an active region.
   This feature may be a weak predictor because much of the flare signal is not located around the polarity inversion line.
