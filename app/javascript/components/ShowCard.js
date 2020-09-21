@@ -4,6 +4,7 @@ import { Card } from "react-bootstrap"
 
 class ShowCard extends React.Component {
   render () {
+    document.title = this.props.title;
     return (
       <React.Fragment>
         <Card>

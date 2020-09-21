@@ -7,6 +7,27 @@
     <% end %>
     <% full_text += line %>
   <% end %>
-  <% article_text = markdown(full_text) %>
-  <%= react_component("ShowCard", {title: @article.title, text: article_text, date: @article.date.strftime('%b %d %Y'), back:"/articles"}) %>
+
+  <% html = markdown(full_text) %>
+  <% revised_html = "" %>
+  <% html.each_line do |line| %>
+    <% if line.start_with? "<p><img" %>
+      <% if (line.include? "(") && (/\(\d+\)/.match?(line)) %>
+        <% line.sub! ">\(", " width=\"" %>
+        <% line.sub! "\)", "\">" %>
+      <% end %>
+      <% if (line.include? "(") && (/\(\w+\)/.match?(line)) %>
+        <% line.sub! "<p>", "<p style=\"text-align:center\">" %>
+        <% line.gsub! /\(\w+\)/, "<br>" %>
+      <% end %>
+      <% line.sub! "\">", "\"><div class=\"caption\">" %>
+      <% line.sub! "</p>", "</div></p>" %>
+    <% end %>
+    <% revised_html += line %>
+  <% end %>
+
+  <%= react_component("ShowCard", {title: @article.title,
+                                   text: revised_html,
+                                   date: @article.date.strftime('%b %d %Y'),
+                                   back: "/articles"}) %>
 </div>

@@ -24,10 +24,10 @@ files.each do |file|
       text += line
     end
   end
-  unless Article.find_by(title: title).nil?
-    a = Article.find_by(title: title)
-  else
+  if Article.find_by(title: title).nil?
     a = Article.new
+  else
+    a = Article.find_by(title: title)
   end
   a.title = title
   a.text = text
@@ -50,10 +50,10 @@ files.each do |file|
       text += line
     end
   end
-  unless Project.find_by(title: title).nil?
-    p = Project.find_by(title: title)
-  else
+  if Project.find_by(title: title).nil?
     p = Project.new
+  else
+    p = Project.find_by(title: title)
   end
   p.title = title
   p.text = text
