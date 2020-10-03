@@ -18,3 +18,9 @@ window.MathJax = {
     inlineMath: [['$', '$'], ['\\(', '\\)']]
   }
 };
+
+if (window.MathJax) {
+  MathJax.Hub.Queue(
+    ["Typeset",MathJax.Hub]
+  );
+}
