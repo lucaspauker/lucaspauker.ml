@@ -1,10 +1,15 @@
 <% @articles = @articles.sort_by {|article| article.date}.reverse %>
+
 <div id="link-content">
   <% @articles.each do |article| %>
     <div id="link-box">
-      <%= react_component("LinkCard", {title: article.title, text: markdown(article.text), date: article.date.strftime('%b %d %Y'), link: article_path(article)}) %>
+      <%= react_component("LinkCard", {title: article.title,
+                                       text: markdown(article.text),
+                                       date: article.date.strftime('%b %d %Y'),
+                                       link: article_path(article)
+                         }) %>
     </div>
   <% end %>
-  <p>More coming soon...</p>
+  <%= react_component("GithubButton") %>
 </div>
 

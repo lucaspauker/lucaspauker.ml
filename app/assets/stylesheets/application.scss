@@ -1,22 +1,14 @@
+
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
 
 $light-gray: #e9ecef;
 $blue: DarkSlateBlue;
 $pink: #e83e8c;
+$border-radius: 10px;
 
 body {
   line-height: 26px;
@@ -30,11 +22,12 @@ nav {
     font-weight: bold;
     letter-spacing: 2px;
     font-size: 20px;
+    margin: 0px 10px;
   }
 
   #active a {
     background-color: $light-gray;
-    border-radius: 5px;
+    border-radius: $border-radius;
     padding-left: 10px;
     padding-right: 8px;
   }
@@ -76,6 +69,7 @@ a {
   width: 90%;
   margin: auto;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 #link-box {
@@ -94,14 +88,17 @@ a {
   }
 }
 
-//articles and projects show
+.card {
+  border-radius: $border-radius;
+}
+
 .card-text {
   font-size: 16px;
 
   pre {
     padding: 10px 10px 10px 10px;
     background-color: $light-gray;
-    border-radius: 5px;
+    border-radius: $border-radius;
   }
 
   blockquote {
@@ -110,7 +107,7 @@ a {
   }
 
   img {
-    border-radius: 5px;
+    border-radius: $border-radius;
     max-width: 100%;
     margin-top: 20px;
   }
@@ -131,4 +128,13 @@ a {
   }
 }
 
+.btn-primary {
+  background-color: DarkSlateBlue;
+  border-color: DarkSlateBlue;
+
+  &:hover {
+    background-color: #e83e8c;
+    border-color: #e83e8c;
+  }
+}
 

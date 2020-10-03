@@ -30,4 +30,12 @@
                                    text: revised_html,
                                    date: @article.date.strftime('%b %d %Y'),
                                    back: "/articles"}) %>
+
+  <a id="like"></a>
+  <div class="like-button">
+    <%= button_to like_path(@article), method: "put" do%>
+      <%= fa_icon "thumbs-o-up" %>
+      <p><%= @article.likes.count %></p>
+    <% end %>
+  </div>
 </div>

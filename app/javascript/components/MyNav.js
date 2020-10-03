@@ -9,15 +9,6 @@ function Active(props) {
       <Nav.Link href="/">Home</Nav.Link>,
       <div id="active">
         <Nav.Link href="/articles">Blog</Nav.Link>
-      </div>,
-      <Nav.Link href="/projects">Projects</Nav.Link>
-    ]
-  } else if (active=="projects") {
-    return [
-      <Nav.Link href="/">Home</Nav.Link>,
-      <Nav.Link href="/articles">Blog</Nav.Link>,
-      <div id="active">
-        <Nav.Link href="/projects">Projects</Nav.Link>
       </div>
     ]
   } else {
@@ -26,7 +17,6 @@ function Active(props) {
         <Nav.Link href="/">Home</Nav.Link>
       </div>,
       <Nav.Link href="/articles">Blog</Nav.Link>,
-      <Nav.Link href="/projects">Projects</Nav.Link>
     ]
   }
 }

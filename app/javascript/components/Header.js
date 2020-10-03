@@ -10,9 +10,14 @@ class Header extends React.Component {
           <div id="jumbo">
             <Image src={this.props.image_path} alt="Profile Photo" roundedCircle />
             <h1>Lucas Pauker</h1>
-            <p>
-              Stanford University undergraduate physics and computer science student
-            </p>
+            <div className="text-box">
+              <p>
+                Stanford University undergraduate
+              </p>
+              <p>
+                physics and computer science student
+              </p>
+            </div>
           </div>
         </Jumbotron>
       </React.Fragment>

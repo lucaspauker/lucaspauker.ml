@@ -1,0 +1,119 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+  line-height: 24px;
+}
+
+nav {
+  border-bottom: 1px solid #e9ecef;
+
+  a {
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 20px;
+  }
+
+  #active a {
+    background-color: #e9ecef;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 8px;
+  }
+}
+
+#links a {
+  color: DarkSlateBlue;
+
+  &:hover {
+    color: #e83e8c;
+  }
+}
+
+a {
+  color: DarkSlateBlue;
+
+  &:hover {
+    color: #e83e8c;
+  }
+}
+
+#show-content {
+  width: 75%;
+  max-width: 800px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .card-title {
+    font-size: 30px;
+  }
+
+  .card-text {
+    padding-top: 10px;
+  }
+}
+
+#link-content {
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+#link-box {
+  margin-bottom: 20px;
+
+  a {
+    color: black;
+
+    &:hover {
+      text-decoration: none;
+
+      .card-title {
+        color: DarkSlateBlue;
+      }
+    }
+  }
+}
+
+.card-text {
+  font-size: 16px;
+
+  pre {
+    padding: 10px 10px 10px 10px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+  }
+
+  blockquote {
+    padding-left: 30px;
+    border-left: 5px solid #e9ecef;
+  }
+}
+
+img {
+  border-radius: 5px;
+  margin: 5px 0 20px 0;
+  max-width: 100%;
+}
+
+h2 {
+  margin-top: 20px;
+  font-size: 26px;
+  border-bottom: solid 1px grey;
+}
+

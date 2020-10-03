@@ -1,9 +1,0 @@
-<% @projects = @projects.sort_by {|project| project.date}.reverse %>
-<div id="link-content">
-  <% @projects.each do |project| %>
-    <div id="link-box">
-      <%= react_component("LinkCard", {title: project.title, text: markdown(project.text), date: project.date.strftime('%b %d %Y'), link: project_path(project)}) %>
-    </div>
-  <% end %>
-  <%= react_component("GithubButton") %>
-</div>

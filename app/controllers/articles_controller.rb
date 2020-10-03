@@ -21,6 +21,13 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def like
+    @article = Article.find(params[:id])
+    puts params
+    Like.create(article_id: @article.id)
+    redirect_to article_path(@article, :anchor => "like")
+  end
+
   private
     def article_params
       params.require(:article).permit(:title, :text, :image, :date)
