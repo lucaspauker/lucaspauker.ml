@@ -14,3 +14,6 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+gitbook.events.bind("page.change", function() {
+    MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+}
