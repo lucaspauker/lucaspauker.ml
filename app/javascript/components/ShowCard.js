@@ -1,8 +1,15 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from "react";
+import PropTypes from "prop-types";
 import { Card } from "react-bootstrap"
 
 class ShowCard extends React.Component {
+  componentDidMount() {
+    console.log("Rerendering MathJax");
+    <script>
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.querySelector('.card-text')]);
+    </script>
+  }
+
   render () {
     document.title = this.props.title;
     return (
@@ -26,4 +33,5 @@ ShowCard.propTypes = {
   date: PropTypes.string,
   back: PropTypes.string,
 };
+
 export default ShowCard

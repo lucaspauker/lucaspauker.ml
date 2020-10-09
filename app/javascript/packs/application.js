@@ -19,8 +19,3 @@ window.MathJax = {
   }
 };
 
-if (window.MathJax) {
-  MathJax.Hub.Queue(
-    ["Typeset",MathJax.Hub]
-  );
-}

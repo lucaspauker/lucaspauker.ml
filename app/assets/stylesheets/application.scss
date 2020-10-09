@@ -60,6 +60,10 @@ a {
     font-size: 30px;
   }
 
+  .card-subtitle {
+    margin-top: 20px;
+  }
+
   .card-text {
     padding-top: 10px;
   }
@@ -113,9 +117,14 @@ a {
   }
 
   h2 {
-    margin-top: 20px;
+    margin-top: 40px;
     font-size: 26px;
     border-bottom: solid 1px $light-gray;
+  }
+
+  h4 {
+    margin-top: 20px;
+    font-size: 18px;
   }
 
   .caption {
