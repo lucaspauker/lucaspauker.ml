@@ -14,7 +14,7 @@ In total, the project cost \$300 million.
 The result? They can send information in 13.3 milliseconds round trip, 3 milliseconds faster than the competition.
 So we can see that a 3 millisecond edge is worth at least \$300 million.
 
-![Map of route from Chicago to New York](chicago_ny)
+![Map of route from Chicago to New York](chicago_ny.jpg)
 (300)(center)Map of Chicago to New York, taken from [here](https://images.privatefly.com/images/inspiration/chicago_new_york670x300.jpg)
 
 Now, companies such as [McKay Brothers](https://www.mckay-brothers.com) use microwave communication to transmit information in 8 milliseconds round trip.
