@@ -69,7 +69,7 @@ In fact, when the cesium atom changes energy levels, it emits light (photons) wh
 An atomic clock has a beam of cesium atoms that absorb energy in the form of microwaves and vibrate.
 The frequency of the microwaves is varied until a maximum number of cesium atoms change state, indicating that the correct frequency has been reached.
 
-![Picture of NIST-F1](nist_f1)
+![Picture of NIST-F1](nist_f1.jpg)
 (200)(center)NIST-F1, taken from [here](https://www.nist.gov/pml/time-and-frequency-division/time-realization/primary-standard-nist-f1)
 
 The NIST clock used by stock exchanges is NIST-F1 which lives in Boulder, Colorado.
