@@ -3,22 +3,16 @@ import PropTypes from "prop-types";
 import { Card } from "react-bootstrap"
 
 class ShowCard extends React.Component {
-  componentDidMount() {
-    console.log("Rerendering MathJax");
-    <script>
-      MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.querySelector('.card-text')]);
-    </script>
-  }
-
   render () {
     document.title = this.props.title;
+    var text = this.props.text;
     return (
       <React.Fragment>
         <Card>
           <Card.Body>
             <Card.Title>{this.props.title}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">{this.props.date}</Card.Subtitle>
-            <Card.Text dangerouslySetInnerHTML={{ __html: this.props.text }}></Card.Text>
+            <Card.Text dangerouslySetInnerHTML={{ __html: text }}></Card.Text>
             <Card.Link href={this.props.back}>Back</Card.Link>
           </Card.Body>
         </Card>

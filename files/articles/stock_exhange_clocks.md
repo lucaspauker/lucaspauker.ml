@@ -1,17 +1,18 @@
-06/10/2020
+11/10/2020
 #Timekeeping in Financial Exchanges
 
-##Why Clocks Matter
+##Why Exchange Clocks Matter
 
-For high frequency trading (HFT), time is literally money.
+In high frequency trading (HFT), time is literally money.
 An edge of a few microseconds could translate to millions in profits.
 The most popular markets for cash products (equity, bonds, etc.) are in New York (NYSE, Nasdaq), while the most popular futures and options market is in Chicago (CME).
 Since cash and futures influence each other, getting data between New York and Chicago as fast as possible is important.
 If one has the fastest transmission time, they can look for price discrepancies and book profits.
-An example of this in action is in 2009, [Spread Networks](https://en.wikipedia.org/wiki/Spread_Networks) layed down an ultra high speed fiber-optic cable between the two cities.
-In order to do it, they bored through mountains in Pennsylvania to reduce the distance information had to travel.
+
+An example of implementing this arbitrage strategy is in 2009, [Spread Networks](https://en.wikipedia.org/wiki/Spread_Networks) layed down an ultra high speed fiber-optic cable between Chicago and New York.
+In order to do it, they bored through mountains in Pennsylvania in order to make the path of the wire as straight as possible, reducing the distance information had to travel.
 In total, the project cost \$300 million.
-The result? They can send information in 13.3 milliseconds round trip, 3 milliseconds faster than the competition.
+The result? They can send information in 13.3 milliseconds round trip, 3 milliseconds faster than the competition at the time.
 So we can see that a 3 millisecond edge is worth at least \$300 million.
 
 ![Map of route from Chicago to New York](chicago_ny.jpg)
@@ -35,16 +36,18 @@ Accurate clocks are also important to settle trades correctly when abnormal even
 One example of this is the [2010 flash crash](https://www.davispolk.com/files/files/Publication/e1fa91c4-79b4-4f66-9699-3924803f31ac/Preview/PublicationAttachment/f088a107-12b9-4f36-af15-3f48e85bb94d/colby.portillla.insights.article.jul10.pdf).
 After the market closed, FINRA decided to cancel trades made after 2:40 PM and at a certain price depending on the security.
 Therefore, having accurate trade logs was essential to apply this rule.
-If there are any discrepancies about who traded, the exchange should be able to accurately retrace every trade in order through the order flow.
+If there are any discrepancies about who traded, the exchange should be able to accurately retrace every trade in order.
 For these reasons, there is a need for accurate clocks across all computers in the exchange.
 
 
 ##Laws In Place
 
-####[1998 NASD OATS rule 6953](https://www.finra.org/sites/default/files/RCA/p002412.pdf):
+There are many laws in place that exchanges must abide by related to how accurate their clocks need to be and how closely the clocks need to be synced with [National Institute of Standards and Technology](https://www.nist.gov) (NIST) clocks.
+
+####[1998 NASD Order Audit Trail System (OATS) rule 6953](https://www.finra.org/sites/default/files/RCA/p002412.pdf):
 
 This rule came after a 1996 SEC report found that dealers did not always act in the best interest of their clients.
-In 1998, FINRA established an Order Audit Trail System (OATS) to track transactions made in the market.
+In 1998, FINRA established the OATS audit system to track transactions made in the market.
 Rule 6953 required all time stamping devices to be synchronized within three seconds of the NIST atomic clock.
 The three second rule required clocks without second precision to be discarded.
 In 2008, this rule was replaced by rule 7430 which required clocks to be within one second of NIST.
@@ -53,11 +56,11 @@ In 2008, this rule was replaced by rule 7430 which required clocks to be within 
 ####[2012 Consolidated Audit Trail (CAT) rule](https://www.broadridge.com/infographic/cat-vs-oats):
 
 In 2012, the SEC implemented the CAT rule, which was a more expansive version of the OATS rule.
-This rule required every registered broker and broker-dealer to keep track of every order and send it to a central place every day.
+This rule required every registered broker and broker-dealer to keep track of every order and send it to a central location every day.
 This means every trade can be monitored by the SEC.
 Furthermore, timestamps were required to be recorded in milliseconds.
 Lastly, timestamps for automated orders were required to be within 50 milliseconds of NIST and timestamps for manual orders were required to be within 1 second of NIST.
-Automated orders are machine-made trades (algorithmic trading), while manual orders are human-made trades.
+Automated orders are machine-initiated trades (algorithmic trading), while manual orders are human-initiated trades.
 
 
 ##How Does the NIST Atomic Clock Work?
@@ -85,7 +88,7 @@ Impressive! And certainly accurate enough for stock exchanges.
 
 ##How are Clocks Synced?
 
-A practical problem that exchanges have is how to sync their clocks to the NIST standard.
+Given the laws described above, a practical problem that exchanges have is how to sync their clocks to the NIST standard.
 The simplest way to do it would be to connect to a service that streams the NIST time out and read it into your clock to sync it.
 However, doing it this way will result in your clock being off by the time it takes for the signal to travel to you, which is not insignificant (it is on the scale of milliseconds).
 
@@ -95,22 +98,23 @@ However, doing it this way will result in your clock being off by the time it ta
 The way that this problem is amended is by having a third party that syncs the clocks.
 For example, if I want to sync my clock in Chicago with NIST-F1 in Boulder, then we can both connect to a satellite $S$ that is equidistant to both Boulder and Chicago.
 The satellite has a clock on board, and when it receives the data from Boulder and Chicago, the satellite records the time differences
-$$\Delta t_{\text{S, Boulder}}=t_S-t_{\text{Boulder}}$$
+<blockquote>$\Delta t_{S, Boulder}=t_S-t_{Boulder}$</blockquote>
 and
-$$\Delta t_{\text{S, Chicago}}=t_S-t_{\text{Chicago}}$$
+<blockquote>$\Delta t_{S, Chicago}=t_S-t_{Chicago}.$</blockquote>
 From this, we can infer the difference between the two clocks 
-$$
-\begin{align*}
-  \Delta t_{\text{Chicago, Boulder}}&=\Delta t_{\text{S, Boulder}} - \Delta t_{\text{S, Chicago}} \\\\
-  &= (t_S-t_{\text{Boulder}}) - (t_S-t_{\text{Chicago}})\\\\
-  &= t_{\text{Chicago}}-t_{\text{Boulder}}
-\end{align*}
-$$
-Now I can adjust my clock until $\Delta t_{\text{Chicago, Boulder}} = 0$!
+<blockquote>$
+  \begin{eqnarray}
+    \Delta t_{Chicago, Boulder}
+    &=& \Delta t_{S, Boulder} - \Delta t_{S, Chicago} \\\\
+    &=& (t_S-t_{Boulder}) - (t_S-t_{Chicago})\\\\
+    &=& t_{Chicago}-t_{Boulder}
+  \end{eqnarray}
+$</blockquote>
+Now I can adjust my clock until $\Delta t_{Chicago, Boulder} = 0$ and the two clocks will be synced!
 
 
-If the satellite is not equidistant from both clocks (i.e. $d_{\text{Chicago}}\not=t_{\text{Boulder}}$), then we can correct for this error as long as we know where the satellite is relative to both clocks since we know that the data travels at the speed of light.
-The ionosphere and troposphere layers of the atmosphere may also introduce error terms that must be taken into account.
+If the satellite is not equidistant from both clocks (i.e. $d_{S, Chicago}\neq d_{S, Boulder}$), then we can correct for this error as long as we know where the satellite is relative to both clocks since we know that the data travels at the speed of light.
+The ionosphere and troposphere layers of the atmosphere may also introduce error terms that must be taken into account in practice.
 
 
 ##Conclusion

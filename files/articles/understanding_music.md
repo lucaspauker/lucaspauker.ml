@@ -32,14 +32,12 @@ For those of us who have (maybe begrudgingly) taken physics classes, there is a 
 Let’s take plucking a guitar string for example.
 When you pluck the string, it vibrates at a certain frequency and it produces a noise at that frequency.
 Frequency $f$ is simply how fast the string is vibrating.
-Higher frequencies sound like higher-pitched notes, and lower frequencies sound like lower-pitched notes.
+Higher frequencies sound like higher-pitched notes, and lower frequencies sound like lower-pitched notes
 Wavelength $\lambda$ is the distance that a wave’s shape repeats.
 Wavelength and frequency are inversely related:
 
-$$f\thinspace\thinspace\alpha\thinspace\thinspace\frac{1}{\lambda}$$
-
+<blockquote>$f\alpha\frac{1}{\lambda}$</blockquote>
 Intuitively, plucking a shorter string creates a higher-pitched sound and vice versa.
-
 Depending on how fast a string is vibrating (the frequency), there are harmonics that arise that produce different sounds.
 Let’s first look at it graphically:
 
@@ -77,7 +75,7 @@ However, the one-note instrument is boring since we are very limited in what we 
 
 Now let’s build a two-note instrument.
 We will essentially add a note between each octave.
-Enforcing the equal-temperament rule, we must have the ratio between any two notes equal to $\sqrt{2}$.
+Enforcing the equal-temperament rule, we must have the ratio between any two notes equal to $\sqrt2$.
 For our one-note instrument, each subsequent note was the second harmonic of the first note since the frequency was doubled.
 The next harmonic is the third harmonic and the third harmonic has $\frac{3}{2}$ times the frequency of the second harmonic.
 We can see that $\sqrt{2}$ is pretty close to $\frac{3}{2}$.
@@ -86,24 +84,24 @@ Ideally, we want to approximate the interval of a fifth (i.e. $\frac{3}{2}$ time
 However, we can see that with this construction, we miss the fifth by a decent amount, so it would be ideal to be able to play fifths more accurately.
 
 Now let’s build a five-note instrument.
-Since five notes make up an octave and we want equal-temperament tuning, the ratio between any two subsequent notes is $\sqrt[5]{2}$.
-We can see that $(\sqrt[5]{2})^3 = 1.516$, so using the five-note scale lets us play intervals that are closer to fifths compared to the two-note instrument.
-In contrast, if we built a four-note scale the closest ratio we can get to the fifth is $(\sqrt[4]{2})^3=1.414$, so we would prefer the five-note scale over the four-note scale.
+Since five notes make up an octave and we want equal-temperament tuning, the ratio between any two subsequent notes is $\root52$.
+We can see that $\root52^3 = 1.516$, so using the five-note scale lets us play intervals that are closer to fifths compared to the two-note instrument.
+In contrast, if we built a four-note scale the closest ratio we can get to the fifth is $\root42^3=1.414$, so we would prefer the five-note scale over the four-note scale.
 
 ## The Equation
 Now we have some intuition into an aspect of what makes a good scale: we want to have the fifth encoded into the scale as closely as possible.
 Let’s abstract this concept a bit.
-For any integer $n$-note scale, the ratio between any two notes is $\sqrt[n]{2}$.
+For any integer $n$-note scale, the ratio between any two notes is $\rootn2$.
 So we want to find an integer $n$ such that for some integer $k$,
 
-$$(\sqrt[n]{2})^k\approx\frac{3}{2}.$$
+<blockquote>$\rootn2 ^k\approx\frac{3}{2}.$</blockquote>
 
 We can rewrite this idea as trying to find an integer $k$ such that $1\leq k < n$ such that we minimize $k - \log_2(\frac{3}{2}) * n$.
 So we can see that to find the optimal $k$, we can solve
 
-$$k= \text{round}(\log_2(\frac{3}{2}) * n),$$
+<blockquote>$k=round(\log_2(\frac{3}{2}) * n),$</blockquote>
 
-where $\text{round}(x)$ rounds $x$ to the nearest integer.
+where $round(x)$ rounds $x$ to the nearest integer.
 
 Let’s see what we get for different values of $n$.
 
